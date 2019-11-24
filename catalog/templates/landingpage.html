@@ -1,0 +1,243 @@
+{% extends "_basetemplate.html" %}
+
+{% block browserTitle %}
+Par6Golf | Tour history
+{% endblock %}
+
+
+
+{% block content %}
+<!-- COUNTDOWN CSS & JQUERY: This section contains the CSS and JQUERY files that power the Countdown-->
+<!-- Note: JQUERY countdown comes from this page - http://keith-wood.name/countdownBasics.html -->
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/jquery.countdown.css' %}">
+<script type="text/javascript" src="{% static 'js/jquery.plugin.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/jquery.countdown.js' %}"></script>
+
+<div class="scrollContainer smoothScroll">
+
+<!-- START Current Tour -->
+<div id=currentTourBox>
+  <div id=countdownText>Next tour in...</div>
+  <div id=defaultCountdown></div>
+
+<!-- === UPDATING INSTRUCTIONS ===
+  1. UPDATE ADMIN WITH TOUR DETAILS
+  2. UPDATE HTML BY COPYING BLOCK OF TEXT AND CHANGING SHORTNAME
+  3. UPDTAE CSS BY COPYING LOWER BLOCK AND UPDATING SHORTNAME
+-->
+
+<!-- The Bayou Bonanza -->
+<div class="tourTile bigShadow contracted">
+  <div class="tourHeader" id="bonanzaBackground">
+    <div class="tourLogo"><img id="bonanzaLogo" src="{% static 'icons/bonanzaLogoGreen.svg'%}"></div>
+    <div class=tourTitle id="bonanzaTitleText">{{bonanza}}</div>
+    <div class=tourSubTitle id=bonanzaSubTitleText>{{bonanza_location}}</div>
+    <a href="{{bonanza_url}}" target="_blank">
+       <!-- Add in link out logo -->
+    <img class=tourButtonOut id=bonanzaButtonOut src="{% static 'icons/linkOutIconWhite.svg' %}"></a>
+    <div class=tourNumber>Tour # {{ bonanza_number }}</div>
+    <div class=tourDates>{{bonanza_dates}}</div>
+    <img class=tourJacketLogo src="{% static 'icons/jacketIconGreen.svg' %}">
+    <div class=tourJacketWinner>{{ bonanza_winner }}</div>
+  </div>
+  <div class="detailsButton">
+    <img class="detailsButtonIcon" src="{% static 'icons/downButton.svg' %}">
+    </div>
+
+  <!-- Drop-down section -->
+  <div class=playersHeader>PLAYERS</div>
+    <div class=playersDetailsBox>
+      <!-- ForLoop: Tour_1_Players -->
+      {% for item in bonanza_players %}
+      <div class=playersDetailsRow>
+        <img class=playersDetailsImg src="{{ item.tour_player.image.url }}">
+        <div class=playersDetailsName>{{item.tour_player}}</div></div>
+      {% endfor %}
+      <!-- EndFor: TourPlayers -->
+    </div>
+
+  <div class=coursesHeader>COURSES</div>
+    <div class=coursesDetailsBox>
+      <!-- ForLoop: Tour_2_Courses -->
+      {% for course in bonanza_courses %}
+      <div class=coursesDetailsRow>
+        <img class=coursesDetailsImg src="{% static 'icons/golfCourseGreen.svg' %}">
+        <div class=coursesDetailsName>{{ course.tour_course }}</div></div>
+        {% endfor %}
+      <!-- EndFor: Tour_2_Courses -->
+    </div>
+
+  <div class=resultsHeader>RESULTS</div>
+  <div class=resultsDetailsBox>
+    <!-- ForLoop: Tour_3_Results -->
+    {% for result in bonanza_result %}
+    <div class=resultsDetailsRow>
+      {% if forloop.counter == 1 %}
+      <div class=resultsDetailsImg style="background-color: var(--par6green)">{{ forloop.counter }}</div>
+      {% else %}
+      <div class=resultsDetailsImg>{{ forloop.counter }}</div>
+      {% endif %}
+      <div class=resultsDetailsName>{{ result.tour_player }}</div></div>
+      {% endfor %}
+    <!-- EndFor: Tour_3_Results -->
+  </div>
+
+  <div class=organizerHeader>ORGANIZER</div>
+  <div class=organizerDetailsBox>
+    <!-- ForLoop: Tour_4_Organizer -->
+    {% for organizer in bonanza_organizer %}
+    <div class=organizerDetailsRow>
+      <img class=playersDetailsImg src="{{ organizer.tour_player.image.url }}">
+      <div class=organizerDetailsName>{{ organizer.tour_player }}</div></div>
+      {% endfor %}
+    <!-- EndFor: Tour_4_Organizer -->
+  </div>
+
+</div>
+
+</div>
+<!-- END Current Tour box -->
+
+<!-- === THE DUEL IN THE DESERT === -->
+<div class="tourTile bigShadow contracted">
+  <div class="tourHeader" id="duelBackground">
+    <div class="tourLogo"><img id="duelLogo" src="{% static 'icons/duelLogoOrange.svg'%}"></div>
+    <div class=tourTitle id="duelTitleText">{{duel}}</div>
+    <div class=tourSubTitle id=duelSubTitleText>{{duel_location}}</div>
+    <a href="{{duel_url}}" target="_blank">
+       <!-- Add in link out logo -->
+    <img class=tourButtonOut id=duelButtonOut src="{% static 'icons/linkOutIconWhite.svg' %}"></a>
+    <div class=tourNumber>Tour # {{ duel_number }}</div>
+    <div class=tourDates>{{duel_dates}}</div>
+    <img class=tourJacketLogo src="{% static 'icons/jacketIconGreen.svg' %}">
+    <div class=tourJacketWinner>{{ duel_winner }}</div>
+  </div>
+  <div class="detailsButton">
+    <img class="detailsButtonIcon" src="{% static 'icons/downButton.svg' %}">
+    </div>
+
+  <!-- Drop-down section -->
+  <div class=playersHeader>PLAYERS</div>
+    <div class=playersDetailsBox>
+      <!-- ForLoop: Tour_1_Players -->
+      {% for item in duel_players %}
+      <div class=playersDetailsRow>
+        <img class=playersDetailsImg src="{{ item.tour_player.image.url }}">
+        <div class=playersDetailsName>{{item.tour_player}}</div></div>
+      {% endfor %}
+      <!-- EndFor: TourPlayers -->
+    </div>
+
+  <div class=coursesHeader>COURSES</div>
+    <div class=coursesDetailsBox>
+      <!-- ForLoop: Tour_2_Courses -->
+      {% for course in duel_courses %}
+      <div class=coursesDetailsRow>
+        <img class=coursesDetailsImg src="{% static 'icons/golfCourseGreen.svg' %}">
+        <div class=coursesDetailsName>{{ course.tour_course }}</div></div>
+        {% endfor %}
+      <!-- EndFor: Tour_2_Courses -->
+    </div>
+
+  <div class=resultsHeader>RESULTS</div>
+  <div class=resultsDetailsBox>
+    <!-- ForLoop: Tour_3_Results -->
+    {% for result in duel_result %}
+    <div class=resultsDetailsRow>
+      {% if forloop.counter == 1 %}
+      <div class=resultsDetailsImg style="background-color: var(--par6green)">{{ forloop.counter }}</div>
+      {% else %}
+      <div class=resultsDetailsImg>{{ forloop.counter }}</div>
+      {% endif %}
+      <div class=resultsDetailsName>{{ result.tour_player }}</div></div>
+      {% endfor %}
+    <!-- EndFor: Tour_3_Results -->
+  </div>
+
+  <div class=organizerHeader>ORGANIZER</div>
+  <div class=organizerDetailsBox>
+    <!-- ForLoop: Tour_4_Organizer -->
+    {% for organizer in duel_organizer %}
+    <div class=organizerDetailsRow>
+      <img class=playersDetailsImg src="{{ organizer.tour_player.image.url }}">
+      <div class=organizerDetailsName>{{ organizer.tour_player }}</div></div>
+      {% endfor %}
+    <!-- EndFor: Tour_4_Organizer -->
+  </div>
+
+</div>
+
+<!-- === INDY1200 === -->
+<div class="tourTile bigShadow contracted">
+  <div class="tourHeader" id="indyBackground">
+    <div class="tourLogo"><img id="duelLogo" src="{% static 'icons/indyLogoBlue.svg'%}"></div>
+    <div class=tourTitle id="indyTitleText">{{indy}}</div> <!--{{indy}}-->
+    <div class=tourSubTitle id=indySubTitleText>{{indy_location}}</div> <!--{{indy_location}}-->
+    <a href="{{indy_url}}" target="_blank">
+       <!-- Add in link out logo -->
+    <img class=tourButtonOut id=indyButtonOut src="{% static 'icons/linkOutIconWhite.svg' %}"></a>
+    <div class=tourNumber>Tour # {{ indy_number }}</div>
+    <div class=tourDates>{{indy_dates}}</div>
+    <img class=tourJacketLogo src="{% static 'icons/jacketIconGreen.svg' %}">
+    <div class=tourJacketWinner>{{ indy_winner }}</div>
+  </div>
+  <div class="detailsButton">
+    <img class="detailsButtonIcon" src="{% static 'icons/downButton.svg' %}">
+    </div>
+
+  <!-- Drop-down section -->
+  <div class=playersHeader>PLAYERS</div>
+    <div class=playersDetailsBox>
+      <!-- ForLoop: Tour_1_Players -->
+      {% for item in indy_players %}
+      <div class=playersDetailsRow>
+        <img class=playersDetailsImg src="{{ item.tour_player.image.url }}">
+        <div class=playersDetailsName>{{item.tour_player}}</div></div>
+      {% endfor %}
+      <!-- EndFor: TourPlayers -->
+    </div>
+
+  <div class=coursesHeader>COURSES</div>
+    <div class=coursesDetailsBox>
+      <!-- ForLoop: Tour_2_Courses -->
+      {% for course in indy_courses %}
+      <div class=coursesDetailsRow>
+        <img class=coursesDetailsImg src="{% static 'icons/golfCourseGreen.svg' %}">
+        <div class=coursesDetailsName>{{ course.tour_course }}</div></div>
+        {% endfor %}
+      <!-- EndFor: Tour_2_Courses -->
+    </div>
+
+  <div class=resultsHeader>RESULTS</div>
+  <div class=resultsDetailsBox>
+    <!-- ForLoop: Tour_3_Results -->
+    {% for result in indy_result %}
+    <div class=resultsDetailsRow>
+      {% if forloop.counter == 1 %}
+      <div class=resultsDetailsImg style="background-color: green">{{ forloop.counter }}</div>
+      {% else %}
+      <div class=resultsDetailsImg>{{ forloop.counter }}</div>
+      {% endif %}
+      <div class=resultsDetailsName>{{ result.tour_player }}</div></div>
+      {% endfor %}
+    <!-- EndFor: Tour_3_Results -->
+  </div>
+
+  <div class=organizerHeader>ORGANIZER</div>
+  <div class=organizerDetailsBox>
+    <!-- ForLoop: Tour_4_Organizer -->
+    {% for organizer in indy_organizer %}
+    <div class=organizerDetailsRow>
+      <img class=playersDetailsImg src="{{ organizer.tour_player.image.url }}">
+      <div class=organizerDetailsName>{{ organizer.tour_player }}</div></div>
+      {% endfor %}
+    <!-- EndFor: Tour_4_Organizer -->
+  </div>
+
+</div>
+<div class=footerContainer></div>
+</div> <!-- End scroll container -->
+
+
+{% endblock %}

@@ -1,0 +1,496 @@
+/* FOUNDATION CSS SETTINGS */
+* {
+  font-family: verdana;
+  font-size: 12px;
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+/* FONTS */
+@font-face {
+  font-family: 'Sequel_Demo';
+  src: local('Sequel_Demo'),
+       url('/static/fonts/Sequel_Demo.ttf') format("truetype");
+}
+
+@font-face {
+  font-family: 'FredokaOne-Regular';
+  src: local('FredokaOne-Regular'),
+       url('/static/fonts/FredokaOne-Regular.ttf') format("truetype");
+}
+
+@font-face {
+  font-family: 'DuelFont';
+  src: local('DuelFont'),
+       url('/static/fonts/DuelFont.ttf') format("truetype");
+}
+
+@font-face {
+  font-family: 'IndyFont';
+  src: local('IndyFont'),
+       url('/static/fonts/RacingSansOne-Regular.ttf') format("truetype");
+}
+
+@font-face {
+  font-family: 'BonanzaFont';
+  src: local('BonanzaFont'),
+       url('/static/fonts/BonanzaFont.TTF') format("truetype");
+}
+
+/* CSS VARIABLES */
+:root {
+  /* Overall details */
+  --par6green: #0F4F00;
+  --brandfont: 'Avenir';
+  --tourfont: 'FredokaOne-Regular';
+  /* Bonanza details */
+  --bonanzaPurple: #622E83;
+  --bonanzaGreen: #439435;
+  --bonanzaYellow: #E9AE1A;
+  --bonanzaFont: 'BonanzaFont';
+  --bonanzaFontSize: 1.7rem;
+  /* Duel details */
+  --duelPurple: #3A178B;
+  --duelOrange: #F55700;
+  --duelLightOrange: #FEA002;
+  --duelfont: 'DuelFont';
+  --duelfontSize: 2.1rem;
+  /* Indy details */
+  --indyBlue: #012E62;
+  --indyYellow: #FEBA31;
+  --indyfont: 'IndyFont';
+  --indyfontSize: 1.95rem;
+}
+
+.bigShadow {
+  box-shadow: 1px 1px 6px 2px lightgrey;
+}
+
+.smoothScroll {
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+  margin: 0;
+}
+
+/* JAVASCRIPT AND ANIMATE CLASSES */
+.unclicked {background-color: grey;}
+.clicked {background-color: red;}
+
+.contracted {height: 140px;} /* change to 140px in production*/
+.expanded {height: 426px;}
+
+.rotateimg180 {
+  -webkit-transform:rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+/* BASETEMPLATE FORMATTING - header banner and mobile container*/
+#headerMainBanner {
+  width: 100%;
+  height: 120px;
+  background-color: var(--par6green);
+  position: absolute;
+}
+
+#headerContainer {
+  height: 120px;
+  width: 100%;
+  position: relative;
+}
+
+#logoSlot {
+  height: 70px;
+  width: 70px;
+  border-radius: 100%;
+  background-color: white;
+  position: absolute;
+  top: 25px;
+  left: 15px;
+  overflow: hidden;
+}
+
+.par6logo {
+  height: 90%;
+  margin: 4px;
+}
+
+#par6WelcomeText {
+  position: absolute;
+  left: 105px;
+  top: 42px;
+  height: 20px;
+  line-height: 20px;
+  font-size: 1.75rem;
+  color: white;
+  font-family: var(--brandfont);
+  font-weight: bold;
+}
+
+#homeOfTourText {
+  font-family: var(--tourfont);
+  position: absolute;
+  left: 105px;
+  top: 64px;
+  height: 20px;
+  line-height: 20px;
+  font-size: 1.25rem;
+  color: white;
+}
+
+/* LANDING PAGE */
+.scrollContainer {
+    width: 100%;
+    height: 600px;
+    margin-top: 5px;
+}
+
+.footerContainer {
+  height: 80px;
+  width: 100%;
+}
+
+/* Current Tour box and countdown settings */
+#currentTourBox {
+  min-height: 200px;
+  width: 320px;
+  margin: 20px auto;
+  padding-top: 5px;
+  border: 2px solid var(--par6green);
+  position: relative;
+}
+
+#countdownText {
+  position: absolute;
+  top: -13px;
+  left: 10px;
+  background-color: white;
+  height: 14px;
+  min-width: 50px;
+  padding: 0px 5px;
+  color: var(--par6green);
+  font-family: var(--tourtext);
+}
+
+#defaultCountdown {
+  width: 100%;
+  height: 50px;
+  border: 1px solid var(--par6green);
+  padding-top: 5px;
+  background-color: var(--par6green);
+}
+
+/* Unchanging Tour Tile settings */
+.tourTile {
+  width: 300px;
+  margin: 25px auto;
+  margin-bottom: 25px;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.tourHeader {
+  width: 100%;
+  height: 80px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.tourLogo {
+  height: 60px;
+  width: 60px;
+  border-radius: 100%;
+  background-color: white;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.tourTitle {
+  width: 200px;
+  position: absolute;
+  top: 18px;
+  left: 80px;
+}
+
+.tourSubTitle {
+  width: 200px;
+  position: absolute;
+  top: 42px;
+  left: 90px;
+  font-family: var(--brandfont);
+  font-size: 1.1rem;
+}
+
+.tourButtonOut {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  border-radius: 100%;
+  top: 45px;
+  right: 10px;
+  padding: 4px;
+  padding-top: 6px;
+  padding-right: 6px;
+}
+
+.tourNumber {
+  font-family: var(--brandfont);
+  position: absolute;
+  top: 95px;
+  left: 10px;
+  color: grey;
+}
+
+.tourDates {
+  font-family: var(--brandfont);
+  position: absolute;
+  top: 110px;
+  left: 10px;
+  color: grey;
+}
+
+.tourJacketLogo {
+  position: absolute;
+  top: 95px;
+  left: 185px;
+  width: 20px;
+  height: 20px;
+}
+
+.tourJacketWinner {
+  position: absolute;
+  top: 97px;
+  left: 210px;
+  width: 90px;
+  color: var(--par6green);
+  font-weight: bold;
+
+}
+
+/* This is the button that expands contracts the tile */
+.detailsButton {
+  height: 20px;
+  width: 20px;
+  border-radius: 100%;
+  position: absolute;
+  top: 115px;
+  left: 140px;
+  background-color: white;
+}
+
+.detailsButtonIcon {
+  height: 100%;
+}
+
+/* This is the HEADER text in each of the expanded sections */
+.playersHeader, .coursesHeader, .resultsHeader, .organizerHeader {
+  height: 21px;
+  line-height: 20px;
+  width: 140px;
+  font-size: 12px;
+  color: grey;
+  position: absolute;
+}
+
+.playersHeader {
+  top:145px;
+  left: 10px;
+}
+
+.coursesHeader {
+  top:145px;
+  left: 150px;
+}
+
+.resultsHeader {
+  top:230px;
+  left: 150px;
+}
+
+.organizerHeader {
+  top: 375px;
+  left: 150px;
+}
+
+/* This is the BOX that contains the details of each header */
+.playersDetailsBox, .coursesDetailsBox, .resultsDetailsBox, .organizerDetailsBox {
+  position: absolute;
+  width: 135px;
+  /* background-color: #f2f2f2; */
+}
+
+.playersDetailsBox {
+  height: 252px;
+  top: 165px;
+  left: 10px;
+}
+
+.coursesDetailsBox {
+  height: 66px;
+  top: 165px;
+  left: 150px;
+}
+
+.resultsDetailsBox {
+  height: 126px;
+  top: 250px;
+  left: 150px;
+}
+
+
+.organizerDetailsBox {
+  height: 21px;
+  top: 395px;
+  left: 150px;
+}
+
+/* This is each of the ROWS that contains the details of each header */
+.playersDetailsRow, .coursesDetailsRow, .resultsDetailsRow, .organizerDetailsRow {
+  height: 21px;
+  width: 100%;
+  position: relative;
+}
+
+/* This is the image/icon in each row */
+.playersDetailsImg, .coursesDetailsImg, .resultsDetailsImg, .organizerDetailsImg {
+  height: 20px;
+  width: 20px;
+  border-radius: 100%;
+  position: absolute;
+
+}
+
+.playersDetailsImg {
+}
+
+.coursesDetailsImg {
+}
+
+.resultsDetailsImg {
+  background-color: lightgrey;
+  text-align: center;
+  line-height: 22px;
+  font-family: var(--duelfont);
+  color: white;
+}
+
+.organizerDetailsImg {
+  background-color: lightgrey;
+}
+
+/* This is the text detail in each row */
+.playersDetailsName, .coursesDetailsName, .resultsDetailsName, .organizerDetailsName {
+  height: 20px;
+  line-height: 20px;
+  position: absolute;
+  left: 24px;
+  color: grey;
+}
+
+.playersDetailsName {
+  width: 120px;
+}
+
+.coursesDetailsName {
+  width: 110px;
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.resultsDetailsName {
+  width: 120px;
+}
+
+.organizerDetailsName {
+}
+
+/* INDIVIDUAL TOUR SETTINGS */
+
+/* Bayou Bonanza */
+#bonanzaLogo {
+  height: 80%;
+  margin-top: 5px;
+  margin-left: 6px;
+}
+
+#bonanzaBackground {
+  background-color: var(--bonanzaPurple);
+}
+
+#bonanzaTitleText {
+  font-family: var(--bonanzaFont);
+  color: var(--bonanzaYellow);
+  font-size: var(--bonanzaFontSize);
+  top: 20px;
+  left: 80px;
+}
+
+#bonanzaSubTitleText {
+  color: white; /*  var(--bonanzaYellow); */
+}
+
+#bonanzaButtonOut {
+  background-color: var(--bonanzaGreen)
+}
+
+
+/* Duel in the Desert */
+#duelLogo {
+  height: 70%;
+  margin-top: 8px;
+  margin-left: 9px;
+}
+
+#duelBackground {
+  background-color: var(--duelPurple);
+}
+
+#duelTitleText {
+  font-family: var(--duelfont);
+  color: var(--duelOrange);
+  font-size: var(--duelfontSize);
+  top: 20px;
+  left: 80px;
+}
+
+#duelSubTitleText {
+  color: var(--duelLightOrange);
+}
+
+#duelButtonOut {
+  background-color: var(--duelLightOrange)
+}
+
+/* Indy1200 */
+#indyLogo {
+  height: 70%;
+  margin-top: 8px;
+  margin-left: 9px;
+}
+
+#indyBackground {
+  background-color: var(--indyYellow);
+}
+
+#indyTitleText {
+  font-family: var(--indyfont);
+  text-transform: uppercase;
+  color: var(--indyBlue);
+  font-size: var(--indyfontSize);
+  top: 18px;
+  left: 85px;
+}
+
+#indySubTitleText {
+  color: white;
+}
+
+#indyButtonOut {
+  background-color: var(--indyBlue)
+}
