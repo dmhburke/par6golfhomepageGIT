@@ -1,1 +1,1 @@
-web: gunicorn par6golfhomepage.wsgi --log-file - 
+web: gunicorn par6golfHomepage.wsgi --log-file - 
