@@ -44,7 +44,7 @@ def landingpage(request):
     try:
         duel_winner = TourPlayerModel.objects.get(tour_title__title=duel, tour_position__lte=1).tour_player
     except:
-        duel_winner = "TBD"
+        duel_winner = ""
 
 # === 7. INDY 1200 (Indianapolis, Indiana)===
 # TOUR ADMIN - <<Tour Name>>
