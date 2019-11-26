@@ -69,40 +69,39 @@ def landingpage(request):
 
 # === 6. SAVANNAH SLAMMA (Savannah, Georgia)===
 # TOUR ADMIN - Savannah Slamma
-#     try:
-#         slamma = TourModel.objects.get(title="Savannah Slamma").title
-#     except:
-#         slamma = ""
-#     slamma_location = TourModel.objects.get(title=slamma).location
-#     slamma_number = TourModel.objects.get(title=slamma).tour_number
-#     slamma_dates = TourModel.objects.get(title=slamma).tour_dates
-#
-# # TOUR DETAILS - Savannah Slamma
-#     slamma_players = TourPlayerModel.objects.filter(tour_title__title=slamma)
-#     slamma_courses = TourCoursesModel.objects.filter(tour_title__title=slamma)
-#     slamma_result = TourPlayerModel.objects.filter(tour_title__title=slamma, tour_position__lte=6).order_by('tour_position')
-#     slamma_organizer = TourPlayerModel.objects.filter(tour_title__title=slamma, tour_organizer="Yes")
-#     try:
-#         slamma_winner = TourPlayerModel.objects.get(tour_title__title=slamma, tour_position__lte=1).tour_player
-#     except:
-#         slamma_winner = "TBD"
+    slamma = TourModel.objects.get(title="Savannah Slamma").title
+    slamma_location = TourModel.objects.get(title=slamma).location
+    slamma_number = TourModel.objects.get(title=slamma).tour_number
+    slamma_dates = TourModel.objects.get(title=slamma).tour_dates
+
+# TOUR DETAILS - Savannah Slamma
+    slamma_players = TourPlayerModel.objects.filter(tour_title__title=slamma)
+    slamma_courses = TourCoursesModel.objects.filter(tour_title__title=slamma)
+    slamma_result = TourPlayerModel.objects.filter(tour_title__title=slamma, tour_position__lte=6).order_by('tour_position')
+    slamma_organizer = TourPlayerModel.objects.filter(tour_title__title=slamma, tour_organizer="Yes")
+    slamma_url = ""
+
+    try:
+        slamma_winner = TourPlayerModel.objects.get(tour_title__title=bonanza, tour_position__lte=1).tour_player
+    except:
+        slamma_winner = ""
 
 # === 5. PIN SEEKING IN THE PINES (Pinehurst, North Carolina)===
 # TOUR ADMIN - Pin Seeking in the Pines
-#     pines = TourModel.objects.get(title="Pin Seeking in the Pines").title
-#     pines_location = TourModel.objects.get(title=pines).location
-#     pines_number = TourModel.objects.get(title=pines).tour_number
-#     pines_dates = TourModel.objects.get(title=pines).tour_dates
-#
-# # TOUR DETAILS - Duel in the Desert
-#     pines_players = TourPlayerModel.objects.filter(tour_title__title=pines)
-#     pines_courses = TourCoursesModel.objects.filter(tour_title__title=pines)
-#     pines_result = TourPlayerModel.objects.filter(tour_title__title=pines, tour_position__lte=6).order_by('tour_position')
-#     pines_organizer = TourPlayerModel.objects.filter(tour_title__title=pines, tour_organizer="Yes")
-#     try:
-#         pines_winner = TourPlayerModel.objects.get(tour_title__title=slamma, tour_position__lte=1).tour_player
-#     except:
-#         pines_winner = "TBD"
+    pines = TourModel.objects.get(title="Pin Seeking in the Pines").title
+    pines_location = TourModel.objects.get(title=pines).location
+    pines_number = TourModel.objects.get(title=pines).tour_number
+    pines_dates = TourModel.objects.get(title=pines).tour_dates
+
+# TOUR DETAILS - Duel in the Desert
+    pines_players = TourPlayerModel.objects.filter(tour_title__title=pines)
+    pines_courses = TourCoursesModel.objects.filter(tour_title__title=pines)
+    pines_result = TourPlayerModel.objects.filter(tour_title__title=pines, tour_position__lte=6).order_by('tour_position')
+    pines_organizer = TourPlayerModel.objects.filter(tour_title__title=pines, tour_organizer="Yes")
+    try:
+        pines_winner = TourPlayerModel.objects.get(tour_title__title=slamma, tour_position__lte=1).tour_player
+    except:
+        pines_winner = ""
 
 # === 4. TENESSEE TUSSLE (Nashville, Tennessee)===
 
@@ -149,28 +148,28 @@ def landingpage(request):
     'indy_organizer': indy_organizer,
     'indy_url': indy_url,
     #Savannah Slamma
-    # 'slamma': slamma,
-    # 'slamma_location': slamma_location,
-    # 'slamma_number': slamma_number,
-    # 'slamma_dates': slamma_dates,
-    # 'slamma_winner': slamma_winner,
-    # 'slamma_players': slamma_players,
-    # 'slamma_courses': slamma_courses,
-    # 'slamma_result': slamma_result,
-    # 'slamma_organizer': slamma_organizer,
+    'slamma': slamma,
+    'slamma_location': slamma_location,
+    'slamma_number': slamma_number,
+    'slamma_dates': slamma_dates,
+    'slamma_winner': slamma_winner,
+    'slamma_players': slamma_players,
+    'slamma_courses': slamma_courses,
+    'slamma_result': slamma_result,
+    'slamma_organizer': slamma_organizer,
     # Pin seeking in the Pines
-    # 'pines': pines,
-    # 'pines_location': 'pines_location,
-    # 'pines_number': <<pines_number,
-    # 'pines_dates': pines_dates,
-    # 'pines_winner': pines_winner,
-    # 'pines_players': pines_players,
-    # 'pines_courses': pines_courses,
-    # 'pines_result': pines_result,
-    # 'pines_organizer': pines_organizer,
+    'pines': pines,
+    'pines_location': pines_location,
+    'pines_number': pines_number,
+    'pines_dates': pines_dates,
+    'pines_winner': pines_winner,
+    'pines_players': pines_players,
+    'pines_courses': pines_courses,
+    'pines_result': pines_result,
+    'pines_organizer': pines_organizer,
     # Tennessee Tussle
     # '<<tourshortname>>': <<tourshortname>>,
-    # '<<tourshortname>>_location': '<<tourshortname>>_location,
+    # '<<tourshortname>>_location': <<tourshortname>>_location,
     # '<<tourshortname>>_number': <<<<tourshortname>>_number,
     # '<<tourshortname>>_dates': <<tourshortname>>_dates,
     # '<<tourshortname>>_winner': <<tourshortname>>_winner,

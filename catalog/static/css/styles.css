@@ -38,6 +38,18 @@
        url('/static/fonts/BonanzaFont.TTF') format("truetype");
 }
 
+@font-face {
+  font-family: 'SlammaFont';
+  src: local('SlammaFont'),
+       url('/static/fonts/SlammaFont4.TTF') format("truetype");
+}
+
+@font-face {
+  font-family: 'PinesFont';
+  src: local('PinesFont'),
+       url('/static/fonts/PinesFont.otf') format("truetype");
+}
+
 /* CSS VARIABLES */
 :root {
   /* Overall details */
@@ -61,6 +73,16 @@
   --indyYellow: #FEBA31;
   --indyfont: 'IndyFont';
   --indyfontSize: 1.95rem;
+  /* Slamma details */
+  --slammaPink: #FF6872;
+  --slammaYellow: #FFC000; /* #FFF449 */
+  --slammafont: 'SlammaFont';
+  --slammafontSize: 1.4rem;
+  /* Pines details */
+  --pinesGreenDark: #094300;
+  --pinesGreenLight: #A9D18E; /* #FFF449 */
+  --pinesfont: 'PinesFont';
+  --pinesfontSize: 1.45rem;
 }
 
 .bigShadow {
@@ -493,4 +515,60 @@
 
 #indyButtonOut {
   background-color: var(--indyBlue)
+}
+
+/* Savannah Slamma */
+#slammaLogo {
+  height: 70%;
+  margin-top: 8px;
+  margin-left: 9px;
+}
+
+#slammaBackground {
+  background-color: var(--slammaPink);
+}
+
+#slammaTitleText {
+  font-family: var(--slammafont);
+  text-transform: uppercase;
+  color: var(--slammaYellow);
+  font-size: var(--slammafontSize);
+  top: 15px;
+  left: 85px;
+}
+
+#slammaSubTitleText {
+  color: white;
+}
+
+#slammaButtonOut {
+  background-color: var(--slammaYellow)
+}
+
+/* Pin Seeking in the Pines */
+#pinesLogo {
+  height: 80%;
+  margin-top: 7px;
+  margin-left: 7px;
+}
+
+#pinesBackground {
+  background-color: var(--pinesGreenLight);
+}
+
+#pinesTitleText {
+  font-family: var(--pinesfont);
+  text-transform: uppercase;
+  color: var(--pinesGreenDark);
+  font-size: var(--pinesfontSize);
+  top: 22px;
+  left: 77px;
+}
+
+#pinesSubTitleText {
+  color: white;
+}
+
+#pinesButtonOut {
+  background-color: var(--pinesGreenDark)
 }
