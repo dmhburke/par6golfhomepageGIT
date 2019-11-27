@@ -41,7 +41,7 @@
 @font-face {
   font-family: 'SlammaFont';
   src: local('SlammaFont'),
-       url('/static/fonts/SlammaFont4.TTF') format("truetype");
+       url('/static/fonts/SlammaFont3.ttf') format("truetype");
 }
 
 @font-face {
