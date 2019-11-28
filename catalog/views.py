@@ -124,7 +124,7 @@ def landingpage(request):
 
 # === 3.THE COWBOY CLASSIC (Dallas, Texas)===
 # TOUR ADMIN - Cowboy Classic
-    dallas = TourModel.objects.get(title="The Dallas Deluge").title
+    dallas = TourModel.objects.get(title="The Dallas Dust up").title
     dallas_location = TourModel.objects.get(title=dallas).location
     dallas_number = TourModel.objects.get(title=dallas).tour_number
     dallas_dates = TourModel.objects.get(title=dallas).tour_dates
