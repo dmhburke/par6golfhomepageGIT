@@ -10,7 +10,7 @@ def landingpage(request):
 
 # === 9. BAYOU BONANZA (New Orleans, Louisiana)===
 # TOUR ADMIN - Bayou Bonanza
-    bonanza = TourModel.objects.get(title="Bayou Bonanza").title
+    bonanza = TourModel.objects.get(title="The Bayou Bonanza").title
     bonanza_location = TourModel.objects.get(title=bonanza).location
     bonanza_number = TourModel.objects.get(title=bonanza).tour_number
     bonanza_dates = TourModel.objects.get(title=bonanza).tour_dates
@@ -29,7 +29,7 @@ def landingpage(request):
 
 # === 8. DUEL IN THE DESERT (Scottsdale, Arizona)===
 # TOUR ADMIN - Duel in the Desert
-    duel = TourModel.objects.get(title="Duel in the Desert").title
+    duel = TourModel.objects.get(title="The Duel in the Desert").title
     duel_location = TourModel.objects.get(title=duel).location
     duel_number = TourModel.objects.get(title=duel).tour_number
     duel_dates = TourModel.objects.get(title=duel).tour_dates
@@ -69,7 +69,7 @@ def landingpage(request):
 
 # === 6. SAVANNAH SLAMMA (Savannah, Georgia)===
 # TOUR ADMIN - Savannah Slamma
-    slamma = TourModel.objects.get(title="Savannah Slamma").title
+    slamma = TourModel.objects.get(title="The Savannah Slamma").title
     slamma_location = TourModel.objects.get(title=slamma).location
     slamma_number = TourModel.objects.get(title=slamma).tour_number
     slamma_dates = TourModel.objects.get(title=slamma).tour_dates
@@ -98,14 +98,47 @@ def landingpage(request):
     pines_courses = TourCoursesModel.objects.filter(tour_title__title=pines)
     pines_result = TourPlayerModel.objects.filter(tour_title__title=pines, tour_position__lte=6).order_by('tour_position')
     pines_organizer = TourPlayerModel.objects.filter(tour_title__title=pines, tour_organizer="Yes")
+    pines_url = ""
     try:
         pines_winner = TourPlayerModel.objects.get(tour_title__title=slamma, tour_position__lte=1).tour_player
     except:
         pines_winner = ""
 
 # === 4. TENESSEE TUSSLE (Nashville, Tennessee)===
+# TOUR ADMIN - Pin Seeking in the Pines
+    tussle = TourModel.objects.get(title="The Tennessee Tussle").title
+    tussle_location = TourModel.objects.get(title=tussle).location
+    tussle_number = TourModel.objects.get(title=tussle).tour_number
+    tussle_dates = TourModel.objects.get(title=tussle).tour_dates
 
-# === 3. SIXTH STREET SHOWDOWN (Dallas, Texas)===
+# TOUR DETAILS - Duel in the Desert
+    tussle_players = TourPlayerModel.objects.filter(tour_title__title=tussle)
+    tussle_courses = TourCoursesModel.objects.filter(tour_title__title=tussle)
+    tussle_result = TourPlayerModel.objects.filter(tour_title__title=tussle, tour_position__lte=6).order_by('tour_position')
+    tussle_organizer = TourPlayerModel.objects.filter(tour_title__title=tussle, tour_organizer="Yes")
+    tussle_url = ""
+    try:
+        tussle_winner = TourPlayerModel.objects.get(tour_title__title=slamma, tour_position__lte=1).tour_player
+    except:
+        tussle_winner = ""
+
+# === 3.THE COWBOY CLASSIC (Dallas, Texas)===
+# TOUR ADMIN - Cowboy Classic
+    dallas = TourModel.objects.get(title="The Dallas Deluge").title
+    dallas_location = TourModel.objects.get(title=dallas).location
+    dallas_number = TourModel.objects.get(title=dallas).tour_number
+    dallas_dates = TourModel.objects.get(title=dallas).tour_dates
+
+# TOUR DETAILS - Duel in the Desert
+    dallas_players = TourPlayerModel.objects.filter(tour_title__title=dallas)
+    dallas_courses = TourCoursesModel.objects.filter(tour_title__title=dallas)
+    dallas_result = TourPlayerModel.objects.filter(tour_title__title=dallas, tour_position__lte=6).order_by('tour_position')
+    dallas_organizer = TourPlayerModel.objects.filter(tour_title__title=dallas, tour_organizer="Yes")
+    dallas_url = ""
+    try:
+        dallas_winner = TourPlayerModel.objects.get(tour_title__title=slamma, tour_position__lte=1).tour_player
+    except:
+        dallas_winner = ""
 
 # === 2. SNAKEPIT CHALLENGE  (Charleston, South Carolina)===
 
@@ -157,6 +190,7 @@ def landingpage(request):
     'slamma_courses': slamma_courses,
     'slamma_result': slamma_result,
     'slamma_organizer': slamma_organizer,
+    'slamma_url': slamma_url,
     # Pin seeking in the Pines
     'pines': pines,
     'pines_location': pines_location,
@@ -167,31 +201,33 @@ def landingpage(request):
     'pines_courses': pines_courses,
     'pines_result': pines_result,
     'pines_organizer': pines_organizer,
+    'pines_url': pines_url,
     # Tennessee Tussle
-    # '<<tourshortname>>': <<tourshortname>>,
-    # '<<tourshortname>>_location': <<tourshortname>>_location,
-    # '<<tourshortname>>_number': <<<<tourshortname>>_number,
-    # '<<tourshortname>>_dates': <<tourshortname>>_dates,
-    # '<<tourshortname>>_winner': <<tourshortname>>_winner,
-    # '<<tourshortname>>_players': <<tourshortname>>_players,
-    # '<<tourshortname>>_courses': <<tourshortname>>_courses,
-    # '<<tourshortname>>_result': <<tourshortname>>_result,
-    # '<<tourshortname>>_organizer': <<tourshortname>>_organizer,
-    # Sixth street Showdown
-    # '<<tourshortname>>': <<tourshortname>>,
-    # '<<tourshortname>>_location': '<<tourshortname>>_location,
-    # '<<tourshortname>>_number': <<<<tourshortname>>_number,
-    # '<<tourshortname>>_dates': <<tourshortname>>_dates,
-    # '<<tourshortname>>_winner': <<tourshortname>>_winner,
-    # '<<tourshortname>>_players': <<tourshortname>>_players,
-    # '<<tourshortname>>_courses': <<tourshortname>>_courses,
-    # '<<tourshortname>>_result': <<tourshortname>>_result,
-    # '<<tourshortname>>_organizer': <<tourshortname>>_organizer,
-
+    'tussle': tussle,
+    'tussle_location': tussle_location,
+    'tussle_number': tussle_number,
+    'tussle_dates': tussle_dates,
+    'tussle_winner': tussle_winner,
+    'tussle_players': tussle_players,
+    'tussle_courses': tussle_courses,
+    'tussle_result': tussle_result,
+    'tussle_organizer': tussle_organizer,
+    'tussle_url': tussle_url,
+    # The Cowboy Classic
+    'dallas': dallas,
+    'dallas_location': dallas_location,
+    'dallas_number': dallas_number,
+    'dallas_dates': dallas_dates,
+    'dallas_winner': dallas_winner,
+    'dallas_players': dallas_players,
+    'dallas_courses': dallas_courses,
+    'dallas_result': dallas_result,
+    'dallas_organizer': dallas_organizer,
+    'dallas_url': dallas_url,
     # ===COPY CELLS===
     # '<<tourshortname>>': <<tourshortname>>,
-    # '<<tourshortname>>_location': '<<tourshortname>>_location,
-    # '<<tourshortname>>_number': <<<<tourshortname>>_number,
+    # '<<tourshortname>>_location': <<tourshortname>>_location,
+    # '<<tourshortname>>_number': <<tourshortname>>_number,
     # '<<tourshortname>>_dates': <<tourshortname>>_dates,
     # '<<tourshortname>>_winner': <<tourshortname>>_winner,
     # '<<tourshortname>>_players': <<tourshortname>>_players,

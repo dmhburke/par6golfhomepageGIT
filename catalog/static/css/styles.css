@@ -50,6 +50,18 @@
        url('/static/fonts/PinesFont.otf') format("truetype");
 }
 
+@font-face {
+  font-family: 'TussleFont';
+  src: local('TussleFont'),
+       url('/static/fonts/TussleFont.ttf') format("truetype");
+}
+
+@font-face {
+  font-family: 'DallasFont';
+  src: local('DallasFont'),
+       url('/static/fonts/DallasFont1.ttf') format("truetype");
+}
+
 /* CSS VARIABLES */
 :root {
   /* Overall details */
@@ -59,30 +71,40 @@
   /* Bonanza details */
   --bonanzaPurple: #622E83;
   --bonanzaGreen: #439435;
-  --bonanzaYellow: #E9AE1A;
+  --bonanzaYellow: #FFD700;
   --bonanzaFont: 'BonanzaFont';
-  --bonanzaFontSize: 1.7rem;
+  --bonanzaFontSize: 1.5rem;
   /* Duel details */
   --duelPurple: #3A178B;
   --duelOrange: #F55700;
   --duelLightOrange: #FEA002;
   --duelfont: 'DuelFont';
-  --duelfontSize: 2.1rem;
+  --duelfontSize: 2rem;
   /* Indy details */
   --indyBlue: #012E62;
   --indyYellow: #FEBA31;
   --indyfont: 'IndyFont';
-  --indyfontSize: 1.95rem;
+  --indyfontSize: 1.9rem;
   /* Slamma details */
   --slammaPink: #FF6872;
   --slammaYellow: #FFC000; /* #FFF449 */
   --slammafont: 'SlammaFont';
-  --slammafontSize: 1.4rem;
+  --slammafontSize: 1.3rem;
   /* Pines details */
   --pinesGreenDark: #094300;
   --pinesGreenLight: #A9D18E; /* #FFF449 */
   --pinesfont: 'PinesFont';
   --pinesfontSize: 1.45rem;
+  /* Tussle details */
+  --tussleGold: #FEA501;
+  --tussleBrown: #2B0D0C; /* #FFF449 */
+  --tusslefont: 'TussleFont';
+  --tusslefontSize: 1.8rem;
+  /* Dallas details */
+  --dallasBlue: #0D2C5E;
+  --dallasGrey: #C8C9CB; /* #FFF449 */
+  --dallasfont: 'DallasFont';
+  --dallasfontSize: 1.6rem;
 }
 
 .bigShadow {
@@ -236,13 +258,13 @@
   width: 200px;
   position: absolute;
   top: 18px;
-  left: 80px;
+  left: 70px;
 }
 
 .tourSubTitle {
   width: 200px;
   position: absolute;
-  top: 42px;
+  top: 41px;
   left: 90px;
   font-family: var(--brandfont);
   font-size: 1.1rem;
@@ -279,7 +301,7 @@
 .tourJacketLogo {
   position: absolute;
   top: 95px;
-  left: 185px;
+  left: 178px;
   width: 20px;
   height: 20px;
 }
@@ -287,8 +309,8 @@
 .tourJacketWinner {
   position: absolute;
   top: 97px;
-  left: 210px;
-  width: 85px;
+  left: 203px;
+  width: 88px;
   color: var(--par6green);
   font-weight: bold;
 
@@ -450,7 +472,7 @@
   color: var(--bonanzaYellow);
   font-size: var(--bonanzaFontSize);
   top: 20px;
-  left: 80px;
+  left: 76px;
 }
 
 #bonanzaSubTitleText {
@@ -478,7 +500,9 @@
   color: var(--duelOrange);
   font-size: var(--duelfontSize);
   top: 20px;
-  left: 80px;
+  left: 75px;
+  /* letter-spacing: -0.05em; */
+  word-spacing: -0.2em;
 }
 
 #duelSubTitleText {
@@ -506,7 +530,7 @@
   color: var(--indyBlue);
   font-size: var(--indyfontSize);
   top: 18px;
-  left: 85px;
+  left: 80px;
 }
 
 #indySubTitleText {
@@ -533,8 +557,8 @@
   text-transform: uppercase;
   color: var(--slammaYellow);
   font-size: var(--slammafontSize);
-  top: 15px;
-  left: 85px;
+  top: 17px;
+  left: 78px;
 }
 
 #slammaSubTitleText {
@@ -571,4 +595,63 @@
 
 #pinesButtonOut {
   background-color: var(--pinesGreenDark)
+}
+
+/* Tennessee Tussle */
+#tussleLogo {
+  height: 80%;
+  margin-top: 7px;
+  margin-left: 7px;
+}
+
+#tussleBackground {
+  background-color: var(--tussleGold);
+}
+
+#tussleTitleText {
+  font-family: var(--tusslefont);
+  text-transform: uppercase;
+  color: var(--tussleBrown);
+  font-size: var(--tusslefontSize);
+  top: 20px;
+  left: 77px;
+}
+
+#tussleSubTitleText {
+  color: white;
+}
+
+#tussleButtonOut {
+  background-color: var(--tussleBrown )
+}
+
+/* The Cowboy Classic */
+#dallasLogo {
+  height: 75%;
+  margin-top: 6px;
+  margin-left: 6px;
+}
+
+#dallasBackground {
+  background-color: var(--dallasBlue);
+}
+
+#dallasTitleText {
+  font-family: var(--dallasfont);
+  text-transform: uppercase;
+  color: var(--dallasGrey);
+  font-size: var(--dallasfontSize);
+  top: 0px;
+  left: 82px;
+  letter-spacing: 0.05em;
+  word-spacing: 0em;
+}
+
+#dallasSubTitleText {
+  color: white;
+  top: 46px;
+}
+
+#dallasButtonOut {
+  background-color: var(--dallasGrey )
 }
