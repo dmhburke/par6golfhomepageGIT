@@ -27,7 +27,10 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'cg#p$g+j9tax!#a3cup@1$8obt2_+&
 # DEBUG = True
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = ['par6golfhomepage.herokuapp.com','127.0.0.1',]
+ALLOWED_HOSTS = [
+    'www.par6golf.com',
+    'par6golfhomepage.herokuapp.com',
+    '127.0.0.1',]
 # For example:
 # ALLOWED_HOSTS = ['wvwalkingtour.herokuapp.com','127.0.0.1',]
 
