@@ -141,7 +141,22 @@ def landingpage(request):
         dallas_winner = ""
 
 # === 2. SNAKEPIT CHALLENGE  (Charleston, South Carolina)===
+# TOUR ADMIN - snakepit
+    snakepit = TourModel.objects.get(title="The Snakepit Challenge").title
+    snakepit_location = TourModel.objects.get(title=snakepit).location
+    snakepit_number = TourModel.objects.get(title=snakepit).tour_number
+    snakepit_dates = TourModel.objects.get(title=snakepit).tour_dates
 
+# TOUR DETAILS - Duel in the Desert
+    snakepit_players = TourPlayerModel.objects.filter(tour_title__title=snakepit).order_by('tour_playernumber')
+    snakepit_courses = TourCoursesModel.objects.filter(tour_title__title=snakepit)
+    snakepit_result = TourPlayerModel.objects.filter(tour_title__title=snakepit, tour_position__lte=6).order_by('tour_position')
+    snakepit_organizer = TourPlayerModel.objects.filter(tour_title__title=snakepit, tour_organizer="Yes")
+    snakepit_url = ""
+    try:
+        snakepit_winner = TourPlayerModel.objects.get(tour_title__title=snakepit, tour_position__lte=1).tour_player
+    except:
+        snakepit_winner = ""
 # === 1. TOUR OF ORIGIN (Tampa, Florida) ===
 
 
@@ -224,16 +239,17 @@ def landingpage(request):
     'dallas_result': dallas_result,
     'dallas_organizer': dallas_organizer,
     'dallas_url': dallas_url,
-    # ===COPY CELLS===
-    # '<<tourshortname>>': <<tourshortname>>,
-    # '<<tourshortname>>_location': <<tourshortname>>_location,
-    # '<<tourshortname>>_number': <<tourshortname>>_number,
-    # '<<tourshortname>>_dates': <<tourshortname>>_dates,
-    # '<<tourshortname>>_winner': <<tourshortname>>_winner,
-    # '<<tourshortname>>_players': <<tourshortname>>_players,
-    # '<<tourshortname>>_courses': <<tourshortname>>_courses,
-    # '<<tourshortname>>_result': <<tourshortname>>_result,
-    # '<<tourshortname>>_organizer': <<tourshortname>>_organizer,
+    # The Snakepit Challenge
+    'snakepit': snakepit,
+    'snakepit_location': snakepit_location,
+    'snakepit_number': snakepit_number,
+    'snakepit_dates': snakepit_dates,
+    'snakepit_winner': snakepit_winner,
+    'snakepit_players': snakepit_players,
+    'snakepit_courses': snakepit_courses,
+    'snakepit_result': snakepit_result,
+    'snakepit_organizer': snakepit_organizer,
+    'snakepit_url': snakepit_url,
     }
 
     return render(request,'landingpage.html',context=context)
