@@ -16,7 +16,7 @@ def landingpage(request):
     bonanza_dates = TourModel.objects.get(title=bonanza).tour_dates
 
 # TOUR DETAILS - Bayou Bonanza
-    bonanza_players = TourPlayerModel.objects.filter(tour_title__title=bonanza)
+    bonanza_players = TourPlayerModel.objects.filter(tour_title__title=bonanza).order_by('tour_playernumber')
     bonanza_courses = TourCoursesModel.objects.filter(tour_title__title=bonanza)
     bonanza_result = TourPlayerModel.objects.filter(tour_title__title=bonanza, tour_position__lte=6).order_by('tour_position')
     bonanza_organizer = TourPlayerModel.objects.filter(tour_title__title=bonanza, tour_organizer="Yes")
@@ -35,7 +35,7 @@ def landingpage(request):
     duel_dates = TourModel.objects.get(title=duel).tour_dates
 
 # TOUR DETAILS - Duel in the Desert
-    duel_players = TourPlayerModel.objects.filter(tour_title__title=duel)
+    duel_players = TourPlayerModel.objects.filter(tour_title__title=duel).order_by('tour_playernumber')
     duel_courses = TourCoursesModel.objects.filter(tour_title__title=duel)
     duel_result = TourPlayerModel.objects.filter(tour_title__title=duel, tour_position__lte=6).order_by('tour_position')
     duel_organizer = TourPlayerModel.objects.filter(tour_title__title=duel, tour_organizer="Yes")
@@ -47,7 +47,7 @@ def landingpage(request):
         duel_winner = ""
 
 # === 7. INDY 1200 (Indianapolis, Indiana)===
-# TOUR ADMIN - <<Tour Name>>
+# TOUR ADMIN - indy
     try:
         indy = TourModel.objects.get(title="The Indy1200").title
     except:
@@ -56,9 +56,9 @@ def landingpage(request):
     indy_number = TourModel.objects.get(title=indy).tour_number
     indy_dates = TourModel.objects.get(title=indy).tour_dates
 
-# TOUR DETAILS - Duel in the Desert
-    indy_players = TourPlayerModel.objects.filter(tour_title__title=indy)
-    indy_courses = TourCoursesModel.objects.filter(tour_title__title=indy).order_by('tour_playernumber')
+# TOUR DETAILS - indy
+    indy_players = TourPlayerModel.objects.filter(tour_title__title=indy).order_by('tour_playernumber')
+    indy_courses = TourCoursesModel.objects.filter(tour_title__title=indy)
     indy_result = TourPlayerModel.objects.filter(tour_title__title=indy, tour_position__lte=6).order_by('tour_position')
     indy_organizer = TourPlayerModel.objects.filter(tour_title__title=indy, tour_organizer="Yes")
     try:
@@ -75,7 +75,7 @@ def landingpage(request):
     slamma_dates = TourModel.objects.get(title=slamma).tour_dates
 
 # TOUR DETAILS - Savannah Slamma
-    slamma_players = TourPlayerModel.objects.filter(tour_title__title=slamma)
+    slamma_players = TourPlayerModel.objects.filter(tour_title__title=slamma).order_by('tour_playernumber')
     slamma_courses = TourCoursesModel.objects.filter(tour_title__title=slamma)
     slamma_result = TourPlayerModel.objects.filter(tour_title__title=slamma, tour_position__lte=6).order_by('tour_position')
     slamma_organizer = TourPlayerModel.objects.filter(tour_title__title=slamma, tour_organizer="Yes")
@@ -94,7 +94,7 @@ def landingpage(request):
     pines_dates = TourModel.objects.get(title=pines).tour_dates
 
 # TOUR DETAILS - Duel in the Desert
-    pines_players = TourPlayerModel.objects.filter(tour_title__title=pines)
+    pines_players = TourPlayerModel.objects.filter(tour_title__title=pines).order_by('tour_playernumber')
     pines_courses = TourCoursesModel.objects.filter(tour_title__title=pines)
     pines_result = TourPlayerModel.objects.filter(tour_title__title=pines, tour_position__lte=6).order_by('tour_position')
     pines_organizer = TourPlayerModel.objects.filter(tour_title__title=pines, tour_organizer="Yes")
@@ -112,7 +112,7 @@ def landingpage(request):
     tussle_dates = TourModel.objects.get(title=tussle).tour_dates
 
 # TOUR DETAILS - Duel in the Desert
-    tussle_players = TourPlayerModel.objects.filter(tour_title__title=tussle)
+    tussle_players = TourPlayerModel.objects.filter(tour_title__title=tussle).order_by('tour_playernumber')
     tussle_courses = TourCoursesModel.objects.filter(tour_title__title=tussle)
     tussle_result = TourPlayerModel.objects.filter(tour_title__title=tussle, tour_position__lte=6).order_by('tour_position')
     tussle_organizer = TourPlayerModel.objects.filter(tour_title__title=tussle, tour_organizer="Yes")
@@ -130,7 +130,7 @@ def landingpage(request):
     dallas_dates = TourModel.objects.get(title=dallas).tour_dates
 
 # TOUR DETAILS - Duel in the Desert
-    dallas_players = TourPlayerModel.objects.filter(tour_title__title=dallas)
+    dallas_players = TourPlayerModel.objects.filter(tour_title__title=dallas).order_by('tour_playernumber')
     dallas_courses = TourCoursesModel.objects.filter(tour_title__title=dallas)
     dallas_result = TourPlayerModel.objects.filter(tour_title__title=dallas, tour_position__lte=6).order_by('tour_position')
     dallas_organizer = TourPlayerModel.objects.filter(tour_title__title=dallas, tour_organizer="Yes")
