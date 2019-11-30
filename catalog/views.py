@@ -58,7 +58,7 @@ def landingpage(request):
 
 # TOUR DETAILS - Duel in the Desert
     indy_players = TourPlayerModel.objects.filter(tour_title__title=indy)
-    indy_courses = TourCoursesModel.objects.filter(tour_title__title=indy)
+    indy_courses = TourCoursesModel.objects.filter(tour_title__title=indy).order_by('tour_playernumber')
     indy_result = TourPlayerModel.objects.filter(tour_title__title=indy, tour_position__lte=6).order_by('tour_position')
     indy_organizer = TourPlayerModel.objects.filter(tour_title__title=indy, tour_organizer="Yes")
     try:
@@ -82,7 +82,7 @@ def landingpage(request):
     slamma_url = ""
 
     try:
-        slamma_winner = TourPlayerModel.objects.get(tour_title__title=bonanza, tour_position__lte=1).tour_player
+        slamma_winner = TourPlayerModel.objects.get(tour_title__title=slamma, tour_position__lte=1).tour_player
     except:
         slamma_winner = ""
 
@@ -100,7 +100,7 @@ def landingpage(request):
     pines_organizer = TourPlayerModel.objects.filter(tour_title__title=pines, tour_organizer="Yes")
     pines_url = ""
     try:
-        pines_winner = TourPlayerModel.objects.get(tour_title__title=slamma, tour_position__lte=1).tour_player
+        pines_winner = TourPlayerModel.objects.get(tour_title__title=pines, tour_position__lte=1).tour_player
     except:
         pines_winner = ""
 
@@ -118,7 +118,7 @@ def landingpage(request):
     tussle_organizer = TourPlayerModel.objects.filter(tour_title__title=tussle, tour_organizer="Yes")
     tussle_url = ""
     try:
-        tussle_winner = TourPlayerModel.objects.get(tour_title__title=slamma, tour_position__lte=1).tour_player
+        tussle_winner = TourPlayerModel.objects.get(tour_title__title=tussle, tour_position__lte=1).tour_player
     except:
         tussle_winner = ""
 
@@ -136,7 +136,7 @@ def landingpage(request):
     dallas_organizer = TourPlayerModel.objects.filter(tour_title__title=dallas, tour_organizer="Yes")
     dallas_url = ""
     try:
-        dallas_winner = TourPlayerModel.objects.get(tour_title__title=slamma, tour_position__lte=1).tour_player
+        dallas_winner = TourPlayerModel.objects.get(tour_title__title=dallas, tour_position__lte=1).tour_player
     except:
         dallas_winner = ""
 

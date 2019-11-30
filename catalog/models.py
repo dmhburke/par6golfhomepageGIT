@@ -26,6 +26,7 @@ class PlayerModel(models.Model):
 class TourPlayerModel(models.Model):
     tour_title = models.ForeignKey('TourModel',on_delete = models.CASCADE, blank=True, null=True)
     tour_player = models.ForeignKey('PlayerModel',on_delete = models.CASCADE, blank=True, null=True)
+    tour_playernumber = models.IntegerField(blank=True, null=True)
     tour_points = models.IntegerField(blank=True, null=True)
     tour_position = models.IntegerField(blank=True, null=True)
     tour_organizer = models.CharField(max_length=30, blank=True, null=True)
