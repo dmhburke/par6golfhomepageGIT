@@ -158,7 +158,22 @@ def landingpage(request):
     except:
         snakepit_winner = ""
 # === 1. TOUR OF ORIGIN (Tampa, Florida) ===
+    # TOUR ADMIN - Origin
+        origin = TourModel.objects.get(title="The Tour of Origin").title
+        origin_location = TourModel.objects.get(title=origin).location
+        origin_number = TourModel.objects.get(title=origin).tour_number
+        origin_dates = TourModel.objects.get(title=origin).tour_dates
 
+    # TOUR DETAILS - Origin
+        origin_players = TourPlayerModel.objects.filter(tour_title__title=origin).order_by('tour_playernumber')
+        origin_courses = TourCoursesModel.objects.filter(tour_title__title=origin)
+        origin_result = TourPlayerModel.objects.filter(tour_title__title=origin, tour_position__lte=6).order_by('tour_position')
+        origin_organizer = TourPlayerModel.objects.filter(tour_title__title=origin, tour_organizer="Yes")
+        origin_url = ""
+        try:
+            origin_winner = TourPlayerModel.objects.get(tour_title__title=origin, tour_position__lte=1).tour_player
+        except:
+            origin_winner = ""
 
 
     context = {
@@ -250,6 +265,17 @@ def landingpage(request):
     'snakepit_result': snakepit_result,
     'snakepit_organizer': snakepit_organizer,
     'snakepit_url': snakepit_url,
+    # The Tour Of Origin
+    'origin': origin,
+    'origin_location': origin_location,
+    'origin_number': origin_number,
+    'origin_dates': origin_dates,
+    'origin_winner': origin_winner,
+    'origin_players': origin_players,
+    'origin_courses': origin_courses,
+    'origin_result': origin_result,
+    'origin_organizer': origin_organizer,
+    'origin_url': origin_url,
     }
 
     return render(request,'landingpage.html',context=context)

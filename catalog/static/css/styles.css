@@ -68,6 +68,12 @@
        url('/static/fonts/SnakepitFont.ttf') format("truetype");
 }
 
+@font-face {
+  font-family: 'OriginFont';
+  src: local('OriginFont'),
+       url('/static/fonts/OriginFont.ttf') format("truetype");
+}
+
 /* CSS VARIABLES */
 :root {
   /* Overall details */
@@ -116,6 +122,10 @@
   --snakepitPink: #F43E71;
   --snakepitfont: 'SnakepitFont';
   --snakepitfontSize: 1.01rem;
+  /* Origin details */
+  --originGrey: #BFBFBF;
+  --originfont: 'Sequel_Demo';
+  --originfontSize: 1.7rem;
 }
 
 .bigShadow {
@@ -695,5 +705,36 @@
 }
 
 #snakepitButtonOut {
-  background-color: var(--snakepitGreen)
+  background-color: var(--snakepitPink)
+}
+
+/* The Tour of Origin */
+#originLogo {
+  height: 72%;
+  margin-top: 8px;
+  margin-left: 8px;
+}
+
+#originBackground {
+  background-color: var(--originGrey);
+}
+
+#originTitleText {
+  font-family: var(--originfont);
+  text-transform: uppercase;
+  color: var(--par6green);
+  font-size: var(--originfontSize);
+  top: 18px;
+  left: 80px;
+  /* letter-spacing: 0.05em;
+  word-spacing: 0em; */
+}
+
+#originSubTitleText {
+  color: white;
+  top: 42px;
+}
+
+#originButtonOut {
+  background-color: var(--par6green)
 }
