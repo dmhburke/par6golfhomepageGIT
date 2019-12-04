@@ -826,11 +826,12 @@
 
 .formTextBox {
   position: absolute;
-  left: 40px;
+  left: 25px;
   height: 15px;
-  width: 220px;
+  width: 250px;
   text-align: center;
-  color: var(--par6green)
+  color: var(--par6green);
+  font-size: 12px;
 }
 
 #formHeader {
@@ -856,6 +857,7 @@
   position: absolute;
   top: 105px;
   left: 10px;
+  /* font-size: 16px; */
 }
 
 .formContentRow {
@@ -863,6 +865,7 @@
   width: 90%;
   /* background-color: grey; */
   margin: 12px auto;
+  /* font-size: 16px; */
 
 }
 
@@ -878,11 +881,13 @@
   margin: 2px 5px;
   color: var(--par6green);
   font-weight: bold;
+  /* font-size: 16px; */
 }
 
 .formContentEntry {
   height: 30px;
   background-color: #F2F2F2;
+  /* font-size: 16px; */
 
 }
 
@@ -890,6 +895,7 @@
   width: 100%;
   height: 100%;
   border: none;
+  /* font-size: 16px; */
 }
 
 select, textarea {
