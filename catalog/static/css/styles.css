@@ -153,6 +153,11 @@
   transform: rotate(180deg);
 }
 
+.contentBuffer20px {
+  width: 100%;
+  height: 20px;
+}
+
 /* BASETEMPLATE FORMATTING - header banner and mobile container*/
 #headerMainBanner {
   width: 100%;
@@ -206,6 +211,66 @@
   color: white;
 }
 
+.menuContainer {
+  height: 36px;
+  width: 280px;
+  position: absolute;
+  top: 100px;
+  left: 40px;
+  background-color: white;
+  z-index: 200;
+  border-radius: 10px;
+  border: 1px solid var(--par6green);
+}
+
+.menuItem {
+    height: 32px;
+    width: 80px;
+    border-radius: 100%;
+    /* border: 1px solid var(--par6green); */
+    position: absolute;
+    top: 1px;
+}
+
+#menuItemHome {
+  left: 10px;
+}
+
+#menuItemPlayers {
+  left: 100px;
+}
+
+#menuItemRegister {
+  left: 190px;
+}
+
+.menuIconHolder {
+  height: 100%;
+  border-radius: 10px;
+}
+
+#menuIconHome {
+  height: 85%;
+  margin-left: 25px;
+  margin-top: 2px;
+}
+
+#menuIconPlayer {
+  height: 90%;
+  margin-left: 25px;
+  margin-top: 2px;
+}
+
+#menuIconRegister {
+  height: 100%;
+  margin-left: 25px;
+  margin-top: 1px;
+}
+
+.menuItemActive {
+  background-color: var(--par6green);
+}
+
 /* LANDING PAGE */
 .scrollContainer {
     width: 100%;
@@ -223,6 +288,7 @@
   min-height: 200px;
   width: 320px;
   margin: 20px auto;
+  margin-top: 20px;
   padding-top: 5px;
   border: 2px solid var(--par6green);
   position: relative;
@@ -737,4 +803,214 @@
 
 #originButtonOut {
   background-color: var(--par6green)
+}
+
+/* ===REGISTER PAGE=== */
+
+.formContainer {
+  height: 400px;
+  width: 300px;
+  margin: 20px auto;
+  border-radius: 10px;
+  position: relative;
+}
+
+.formIconPar6 {
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  top: 10px;
+  left: 130px;
+  background-color: grey;
+}
+
+.formTextBox {
+  position: absolute;
+  left: 40px;
+  height: 15px;
+  width: 220px;
+  text-align: center;
+  color: var(--par6green)
+}
+
+#formHeader {
+  top: 50px;
+}
+
+#formNextTour {
+  top: 66px;
+  font-weight: bold;
+  font-family: var(--bonanzaFont);
+  font-size: 1.6rem;
+}
+
+#formNextTourDetails {
+    top: 87px;
+    font-style: italic;
+}
+
+.formContentBox {
+  height: 235px;
+  width: 280px;
+  /* background-color: #F2f2f2; */
+  position: absolute;
+  top: 105px;
+  left: 10px;
+}
+
+.formContentRow {
+  height: 45px;
+  width: 90%;
+  /* background-color: grey; */
+  margin: 12px auto;
+
+}
+
+#formCommentsRow {
+  height: 50px;
+  overflow: hidden;
+  background-color: #F2F2F2;
+
+}
+
+.formContentLabel {
+  height: 15px;
+  margin: 2px 5px;
+  color: var(--par6green);
+  font-weight: bold;
+}
+
+.formContentEntry {
+  height: 30px;
+  background-color: #F2F2F2;
+
+}
+
+#id_player_name, #id_tour_status, #id_comments {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+select, textarea {
+  padding: 5px 5px;
+  background-color: #f2f2f2;
+  color: var(--par6green);
+}
+
+select:focus, textarea:focus {
+  background-color: var(--par6green);
+  color: white;
+}
+
+.formSubmitButton {
+  height: 30px;
+  width: 150px;
+  position: absolute;
+  bottom: 0px;
+  left: 65px;
+  border-radius: 10px;
+  background-color: var(--par6green);
+  border: none;
+  color: white;
+}
+
+.formSpotsRemainingBox {
+  height: 30px;
+  width: 130px;
+  position: absolute;
+  bottom: 15px;
+  left: 90px;
+}
+
+.formSpotsRemainingNo {
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  border: 1px solid var(--par6green);
+  border-radius: 100%;
+  color: var(--par6green);
+  font-weight: bold;
+  text-align: center;
+  line-height: 30px;
+  font-family: var(--brandfont)
+}
+
+.formSpotsRemainingText {
+  display: inline-block;
+  height: 30px;
+  line-height: 30px;
+  padding-left: 0px;
+  color: var(--par6green);
+  font-family: var(--brandfont)
+
+}
+
+/* === REGEISTER SUCCESS PAGE === */
+
+#formResultHeader {
+  top: 50px;
+  font-weight: bold;
+}
+
+#formResultMessage {
+  top: 65px;
+}
+
+#formResultID {
+  top: 95px;
+  height: 60px;
+  position: relative;
+  border-top: 1px solid #F2F2F2;
+  border-bottom: 1px solid #F2F2F2;
+}
+
+.formPlayerImage {
+  height:50px;
+  width: 50px;
+  position: absolute;
+  top: 5px;
+  border-radius: 100%;
+}
+
+.formPlayerName {
+  height: 20px;
+  position: absolute;
+  top: 15px;
+  left: 60px;
+  color: var(--par6green);
+  font-weight: bold;
+}
+
+.formPlayerResponse {
+  height: 20px;
+  position: absolute;
+  top: 30px;
+  left: 65px;
+  color: var(--par6green);
+  background-image:
+}
+
+.formResponseIcon {
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  top: 15px;
+  right: 0px;
+}
+
+#formResultSignoff {
+    top: 170px;
+    width: 80%;
+    left: 30px;
+}
+
+.formResultGif {
+  height: 160px;
+  width: 260px;
+  position: absolute;
+  top: 215px;
+  left: 20px;
+  border-radius: 10px;
+
 }

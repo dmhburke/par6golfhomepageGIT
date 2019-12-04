@@ -4,6 +4,7 @@ from django.db.models.signals import pre_save, post_save
 from django.dispatch import receiver
 from django.db.models import Sum, Count
 from django.core.validators import MaxValueValidator, MinValueValidator
+from catalog.choices import *
 
 # Create your models here.
 
@@ -31,9 +32,13 @@ class TourPlayerModel(models.Model):
     tour_position = models.IntegerField(blank=True, null=True)
     tour_organizer = models.CharField(max_length=30, blank=True, null=True)
 
+
 class TourCoursesModel(models.Model):
     tour_title = models.ForeignKey('TourModel',on_delete = models.CASCADE, blank=True, null=True)
     tour_course = models.CharField(max_length=50, blank=True, null=True)
 
 
-# NEXT STEPS: ADD TourCourses Model and include results in TourPlayer Model
+class PlayerRegisterModel(models.Model):
+    player_name = models.ForeignKey('PlayerModel', on_delete = models.CASCADE, blank=True, null=True)
+    tour_status = models.CharField(choices=STATUS_OPTIONS, max_length=30, blank=True, null=True)
+    comments = models.CharField(max_length=200, blank=True, null=True)

@@ -3,5 +3,10 @@ from . import views
 
 urlpatterns = [
     path('', views.landingpage, name='landingpage'),
-    path('XXcountdowntest1', views.XXcountdowntest1, name='XXcountdowntest1'),
+    path('register', views.register, name='register'),
+    path('registersuccess', views.registersuccess, name='registersuccess')
+
 ]
+
+
+# path('XXcountdowntest1', views.XXcountdowntest1, name='XXcountdowntest1'),

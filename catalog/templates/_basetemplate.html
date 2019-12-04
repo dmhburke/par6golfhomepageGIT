@@ -50,7 +50,24 @@ Par 6 Golf
     <img class="par6logo" src="{% static 'icons/par6Logo.jpg' %}">
     </div>
   <div id=par6WelcomeText>Welcome to Par 6 Golf</div>
-  <div id=homeOfTourText>the home of the tour &#174</div>
+  <div id=homeOfTourText>the home of the tour <!--&#174--> </div>
+
+  <div class=menuContainer>
+    <div class=menuItem id=menuItemHome>
+      {% block menuItemHome %}
+      {% endblock %}
+    </div>
+    <div class=menuItem id=menuItemPlayers>
+      {% block menuItemPlayers %}
+      {% endblock %}
+    </div>
+    <div class=menuItem id=menuItemRegister>
+      {% block menuItemRegister %}
+      {% endblock %}
+    </div>
+  </div>
+
+
   </div>
 <!-- MAIN CONTENT: Each page extends this template and pipes in content within the content block -->
 

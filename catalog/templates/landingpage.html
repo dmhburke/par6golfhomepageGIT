@@ -4,17 +4,39 @@
 
 {% endblock %}
 
+{% load static %}
+
+<!-- This block section defines the ACTIVE MENU ITEMS in the menu bar (adjusted for each) -->
+{% block menuItemHome %}
+<a href="{% url 'landingpage' %}">
+  <div class="menuIconHolder menuItemActive">
+  <img id=menuIconHome src="{% static 'icons/menuHomeWhite.svg' %}"></div></a>
+{% endblock %}
+
+{% block menuItemPlayers %}
+<a href="{% url 'register' %}">
+  <div class="menuIconHolder">
+  <img id=menuIconPlayer src="{% static 'icons/menuPlayerGreen.svg' %}"></div></a>
+{% endblock %}
+
+{% block menuItemRegister %}
+<a href="{% url 'register' %}">
+  <div class="menuIconHolder">
+  <img id=menuIconRegister src="{% static 'icons/menuRegisterGreen.svg' %}"></div></a>
+{% endblock %}
+
 
 
 {% block content %}
 <!-- COUNTDOWN CSS & JQUERY: This section contains the CSS and JQUERY files that power the Countdown-->
 <!-- Note: JQUERY countdown comes from this page - http://keith-wood.name/countdownBasics.html -->
-{% load static %}
+
 <link rel="stylesheet" href="{% static 'css/jquery.countdown.css' %}">
 <script type="text/javascript" src="{% static 'js/jquery.plugin.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/jquery.countdown.js' %}"></script>
 
 <div class="scrollContainer smoothScroll">
+<div class=contentBuffer20px></div>
 
   <!-- START Current Tour -->
   <div id=currentTourBox>

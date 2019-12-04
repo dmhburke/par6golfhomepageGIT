@@ -1,0 +1,46 @@
+{% extends "_basetemplate.html" %}
+
+{% block browserTitle %}
+
+{% endblock %}
+
+{% load static %}
+
+<!-- This block section defines the ACTIVE MENU ITEMS in the menu bar (adjusted for each) -->
+{% block menuItemHome %}
+<a href="{% url 'landingpage' %}">
+  <div class="menuIconHolder"> <!-- menuItemActive -->
+  <img id=menuIconHome src="{% static 'icons/menuHomeGreen.svg' %}"></div></a>
+{% endblock %}
+
+{% block menuItemPlayers %}
+<a href="{% url 'register' %}">
+  <div class="menuIconHolder">
+  <img id=menuIconPlayer src="{% static 'icons/menuPlayerGreen.svg' %}"></div></a>
+{% endblock %}
+
+{% block menuItemRegister %}
+<a href="{% url 'register' %}">
+  <div class="menuIconHolder menuItemActive">
+  <img id=menuIconRegister src="{% static 'icons/menuRegisterWhite.svg' %}"></div></a>
+{% endblock %}
+
+
+{% block content %}
+<div class=contentBuffer20px></div>
+
+<div class="formContainer bigShadow">
+  <img class=formIconPar6 src="{% static 'icons/par6Logo.jpg' %}">
+  <div class=formTextBox id=formResultHeader>Success!</div>
+  <div class=formTextBox id=formResultMessage>We have recorded your availability</div>
+  <div class=formTextBox id=formResultID>
+    <div class=formPlayerImage style="background-image: url({{latest_entry_image.url}}); background-size: cover"></div>
+    <div class=formPlayerName>{{latest_entry_name}}</div>
+    <div class=formPlayerResponse>{{latest_entry_response}}</div>
+    <div class=formResponseIcon style="background-image: url({{response_emoji}}); background-size: cover"></div>
+  </div>
+  <div class=formTextBox id=formResultSignoff>If things change, simply resubmit your status here. Now watch this drive...</div>
+  <div class=formResultGif style="background-image: url(https://media.giphy.com/media/qnN5PWEVUziec/giphy.gif); background-size: cover"></div>
+</div>
+
+{% endblock %}

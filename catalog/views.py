@@ -1,8 +1,10 @@
 from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 
 #Import models here
-from catalog.models import TourPlayerModel, TourModel, TourCoursesModel
+from catalog.models import TourPlayerModel, PlayerModel, TourModel, TourCoursesModel, PlayerRegisterModel
+from catalog.forms import PlayerRegisterForm
 
 # Create your views here.
 def landingpage(request):
@@ -280,25 +282,70 @@ def landingpage(request):
 
     return render(request,'landingpage.html',context=context)
 
-# === FOR NEW TOUR, COPY AND REPLACE CODE <<>> ===
-# TOUR ADMIN - <<Tour Name>>
-    # try:
-        # <<tour shortname>> = TourModel.objects.get(title="<<tour FullName>>").title
-    # except:
-        # <<tour shortname>> = ""
-    # <<tour shortname>>_location = TourModel.objects.get(title=<<tour shortname>>).location
-    # <<tour shortname>>_number = TourModel.objects.get(title=<<tour shortname>>).tour_number
-    # <<tour shortname>>_dates = TourModel.objects.get(title=<<tour shortname>>).tour_dates
+def register(request):
+    """View that controls how players register for next tour"""
 
-# TOUR DETAILS - Duel in the Desert
-    # <<tour shortname>>_players = TourPlayerModel.objects.filter(tour_title__title=<<tour shortname>>)
-    # <<tour shortname>>_courses = TourCoursesModel.objects.filter(tour_title__title=<<tour shortname>>)
-    # <<tour shortname>>_result = TourPlayerModel.objects.filter(tour_title__title=<<tour shortname>>, tour_position__lte=6).order_by('tour_position')
-    # <<tour shortname>>_organizer = TourPlayerModel.objects.filter(tour_title__title=<<tour shortname>>, tour_organizer="Yes")
-    # try:
-    #     <<tour shortname>>_winner = TourPlayerModel.objects.get(tour_title__title=slamma, tour_position__lte=1).tour_player
-    # except:
-    #     <<tour shortname>>_winner = "TBD"
+    # Form details to record registration
+    if request.method == 'POST':
+        form = PlayerRegisterForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.save()
+            return redirect('registersuccess') #or whatever the url
+    else:
+        form = PlayerRegisterForm()
+
+    #calculation of remaining slots left for next tour
+    next_tour_name = "The Bayou Bonanza"
+    total_tour_spots = 12
+
+    locked_in_spots = TourPlayerModel.objects.filter(tour_title__title=next_tour_name).count()
+    remaining_spots = total_tour_spots - locked_in_spots
+    context = {
+        'form': form,
+        'remaining_spots': remaining_spots,
+    }
+
+    return render(request, 'register.html', context=context)
+
+def registersuccess(request):
+    """"""
+    latest_entry = PlayerRegisterModel.objects.last()
+    latest_entry_name = latest_entry.player_name
+    latest_entry_response_raw = latest_entry.tour_status
+
+    def convert_response(entry):
+        switch_options = {
+            "YES": "Lock me in",
+            "MAYBE": "Keep me informed",
+            "NO": "Out"
+        }
+        return switch_options.get(entry, "Invalid response")
+
+    latest_entry_response = convert_response(latest_entry_response_raw)
+    latest_entry_image = PlayerModel.objects.get(name=latest_entry_name).image
+
+    def get_emoji(value):
+        switch_options = {
+        "YES": "https://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/thumbs-up.png",
+        "NO": "https://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/thumbs-down.png",
+        "MAYBE": "https://i.pinimg.com/originals/d6/06/3c/d6063c4b824cae58b5de19cf1ccf315f.png"
+        }
+
+        return switch_options.get(value, "")
+
+    response_emoji = get_emoji(latest_entry_response_raw)
+
+    context = {
+        'latest_entry_name': latest_entry_name,
+        'latest_entry_response': latest_entry_response,
+        'latest_entry_image': latest_entry_image,
+        'response_emoji': response_emoji,
+        # 'test': test,
+    }
+
+    return render(request, 'registersuccess.html', context=context)
+
 
 
 def XXcountdowntest1(request):
