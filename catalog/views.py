@@ -31,7 +31,7 @@ def landingpage(request):
     try:
         bonanza_winner = TourPlayerModel.objects.get(tour_title__title=bonanza, tour_position__lte=1).tour_player
     except:
-        bonanza_winner = ""
+        bonanza_winner = "TBD"
 
 # === 8. DUEL IN THE DESERT (Scottsdale, Arizona)===
 # TOUR ADMIN - Duel in the Desert
@@ -71,7 +71,7 @@ def landingpage(request):
         indy_winner = TourPlayerModel.objects.get(tour_title__title=indy, tour_position__lte=1).tour_player
     except:
         indy_winner = ""
-    indy_url = "https://www.par6golf.com"
+    indy_url = "https://golfapp1dev.herokuapp.com/login/leaderboard/"
 
 # === 6. SAVANNAH SLAMMA (Savannah, Georgia)===
 # TOUR ADMIN - Savannah Slamma
@@ -85,7 +85,7 @@ def landingpage(request):
     slamma_courses = TourCoursesModel.objects.filter(tour_title__title=slamma)
     slamma_result = TourPlayerModel.objects.filter(tour_title__title=slamma, tour_position__lte=6).order_by('tour_position')
     slamma_organizer = TourPlayerModel.objects.filter(tour_title__title=slamma, tour_organizer="Yes")
-    slamma_url = ""
+    slamma_url = "https://docs.google.com/spreadsheets/d/1t6PDOkvBo_hQ0U5VS9YaG194k-dvOn-vG2DqIKuEeAs/edit#gid=1448364988"
 
     try:
         slamma_winner = TourPlayerModel.objects.get(tour_title__title=slamma, tour_position__lte=1).tour_player
@@ -99,37 +99,37 @@ def landingpage(request):
     pines_number = TourModel.objects.get(title=pines).tour_number
     pines_dates = TourModel.objects.get(title=pines).tour_dates
 
-# TOUR DETAILS - Duel in the Desert
+# TOUR DETAILS - Pines
     pines_players = TourPlayerModel.objects.filter(tour_title__title=pines).order_by('tour_playernumber')
     pines_courses = TourCoursesModel.objects.filter(tour_title__title=pines)
     pines_result = TourPlayerModel.objects.filter(tour_title__title=pines, tour_position__lte=6).order_by('tour_position')
     pines_organizer = TourPlayerModel.objects.filter(tour_title__title=pines, tour_organizer="Yes")
-    pines_url = ""
+    pines_url = "https://docs.google.com/spreadsheets/d/1H_WUn0V2Tqt6E8V_aKDgge27-Xxxo3itb_UL5kz5nys/edit#gid=1448364988"
     try:
         pines_winner = TourPlayerModel.objects.get(tour_title__title=pines, tour_position__lte=1).tour_player
     except:
         pines_winner = ""
 
 # === 4. TENESSEE TUSSLE (Nashville, Tennessee)===
-# TOUR ADMIN - Pin Seeking in the Pines
+# TOUR ADMIN - Tussle
     tussle = TourModel.objects.get(title="The Tennessee Tussle").title
     tussle_location = TourModel.objects.get(title=tussle).location
     tussle_number = TourModel.objects.get(title=tussle).tour_number
     tussle_dates = TourModel.objects.get(title=tussle).tour_dates
 
-# TOUR DETAILS - Duel in the Desert
+# TOUR DETAILS - Tussle
     tussle_players = TourPlayerModel.objects.filter(tour_title__title=tussle).order_by('tour_playernumber')
     tussle_courses = TourCoursesModel.objects.filter(tour_title__title=tussle)
     tussle_result = TourPlayerModel.objects.filter(tour_title__title=tussle, tour_position__lte=6).order_by('tour_position')
     tussle_organizer = TourPlayerModel.objects.filter(tour_title__title=tussle, tour_organizer="Yes")
-    tussle_url = ""
+    tussle_url = "https://docs.google.com/spreadsheets/d/1SwDdvu7VxB0OE8-W8C7WmwpUqSmNhAegDVXRgb4jlsE/edit#gid=1448364988"
     try:
         tussle_winner = TourPlayerModel.objects.get(tour_title__title=tussle, tour_position__lte=1).tour_player
     except:
         tussle_winner = ""
 
-# === 3.THE COWBOY CLASSIC (Dallas, Texas)===
-# TOUR ADMIN - Cowboy Classic
+# === 3.THE DALLAS DUST UP (Dallas, Texas)===
+# TOUR ADMIN - Dust up
     dallas = TourModel.objects.get(title="The Dallas Dust up").title
     dallas_location = TourModel.objects.get(title=dallas).location
     dallas_number = TourModel.objects.get(title=dallas).tour_number
@@ -324,7 +324,7 @@ def register(request):
             name = post.player_name.name
             status = post.tour_status
             post.save()
-            send_mail(subject, name + message1 + status + message2, email_from, email_to, fail_silently=False)
+            send_mail(subject, name + message1 + status + message2, email_from, email_to) #, fail_silently=False
             return redirect('registersuccess') #or whatever the url
     else:
         form = PlayerRegisterForm()
