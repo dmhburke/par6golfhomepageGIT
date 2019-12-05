@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'catalog.apps.CatalogConfig',
     'jquery',
     'storages',
+    'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [

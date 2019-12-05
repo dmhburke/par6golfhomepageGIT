@@ -14,10 +14,9 @@
 {% endblock %}
 
 {% block menuItemPlayers %}
-<!-- <a href="{% url 'register' %}"> -->
+<a href="{% url 'players' %}">
   <div class="menuIconHolder">
-  <img id=menuIconPlayer src="{% static 'icons/menuPlayerGreen.svg' %}"></div>
-<!-- </a> -->
+  <img id=menuIconPlayer src="{% static 'icons/menuPlayerGreen.svg' %}"></div></a>
 {% endblock %}
 
 {% block menuItemRegister %}
@@ -59,7 +58,6 @@
   <div class=formSpotsRemainingNo>{{remaining_spots}}</div>
   <div class=formSpotsRemainingText>spots remaining</div>
   </div>
-
 
 </div>
 

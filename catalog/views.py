@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import render, redirect
+from django.db.models import Sum, Count, Min
 
 
 #Import models here
@@ -281,6 +282,26 @@ def landingpage(request):
     }
 
     return render(request,'landingpage.html',context=context)
+
+def players(request):
+
+    active_players = PlayerModel.objects.all().order_by('name')
+    mgmt_committee = PlayerModel.objects.filter(mgmt_committee="YES").order_by('-tour_number', 'high_finish', 'name')
+    touring_party = PlayerModel.objects.filter(mgmt_committee="NO").order_by('-tour_number', 'high_finish', 'name')
+
+    # tour_number = TourPlayerModel.objects.filter(tour_player__name="Daniel Burke").count()
+    # high_finish = list(TourPlayerModel.objects.filter(tour_player__name="Daniel Burke").aggregate(Min('tour_position')).values())[0]
+
+    context = {
+        'active_players': active_players,
+        'mgmt_committee': mgmt_committee,
+        'touring_party': touring_party,
+        # 'tour_number': tour_number,
+        # 'high_finish': high_finish,
+    }
+
+    return render(request, 'players.html', context=context)
+
 
 def register(request):
     """View that controls how players register for next tour"""

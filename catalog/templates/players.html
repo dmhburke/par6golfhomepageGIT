@@ -1,0 +1,88 @@
+{% extends "_basetemplate.html" %}
+
+{% block browserTitle %}
+
+{% endblock %}
+
+{% load static %}
+{% load humanize %}
+<!-- This block section defines the ACTIVE MENU ITEMS in the menu bar (adjusted for each) -->
+{% block menuItemHome %}
+<a href="{% url 'landingpage' %}">
+  <div class="menuIconHolder"> <!-- menuItemActive -->
+  <img id=menuIconHome src="{% static 'icons/menuHomeGreen.svg' %}"></div></a>
+{% endblock %}
+
+{% block menuItemPlayers %}
+<a href="{% url 'players' %}">
+  <div class="menuIconHolder menuItemActive">
+  <img id=menuIconPlayer src="{% static 'icons/menuPlayerWhite.svg' %}"></div></a>
+{% endblock %}
+
+{% block menuItemRegister %}
+<a href="{% url 'register' %}">
+  <div class="menuIconHolder">
+  <img id=menuIconRegister src="{% static 'icons/menuRegisterGreen.svg' %}"></div></a>
+{% endblock %}
+
+
+{% block content %}
+<div class="scrollContainer smoothScroll">
+<div class=contentBuffer20px></div>
+{% if mgmt_committee %}
+<div class=mgmtCommitteeBox>
+  <div class=mgmtCommitteeText id=mgmtCommitteeTextHeader>Management Committee</div>
+{% for player in mgmt_committee %}
+<div class="playerContentBox bigShadow">
+  <div class="playerContentImage" style="background-image: url({{player.image.url}}); background-size: cover"></div>
+  <div class="playerContentRow" id=playerNameDetails>
+    <div class=playerResultKey id="playerResultName">{{player.name}}</div>
+    <div class=playerNationality style="background-image: url({{player.nationality_flag}}); background-size: cover"></div>
+  </div>
+  <div class="playerContentRow" id=playerTourDetails>
+    <div class=playerResultKey id="tourResultLabel">Tour number:</div>
+    <div class=playerResultValue>{{player.roman_numerals}}</div>
+  </div>
+
+  {% if player.result_jacket == "Jacket" %}
+  <div class="playerContentRow" id=playerHighFinishDetails>
+    <div class="playerResultKey" id="finishResultLabel" style="color: var(--par6green)">High finish:</div>
+    <div class=playerResultValue style="color: var(--par6green)">{{player.result_jacket|ordinal}}</div>
+  </div>
+  {% else %}
+  <div class="playerContentRow" id=playerHighFinishDetails>
+    <div class=playerResultKey id="finishResultLabel">High finish:</div>
+    <div class=playerResultValue>{{player.result_jacket|ordinal}}</div>
+  </div>
+  {% endif %}
+</div>
+{% endfor %}
+<div class=mgmtCommitteeText id=mgmtCommitteeTextFooter>Touring Party</div>
+</div>
+{% endif %}
+
+{% for player in touring_party %}
+<div class=touringPartyBox>
+<div class="playerContentBox bigShadow">
+  <div class="playerContentImage" style="background-image: url({{player.image.url}}); background-size: cover"></div>
+  <div class="playerContentRow" id=playerNameDetails>
+    <div class=playerResultKey id="playerResultName">{{player.name}}</div>
+    <div class=playerNationality style="background-image: url({{player.nationality_flag}}); background-size: cover"></div>
+  </div>
+  <div class="playerContentRow" id=playerTourDetails>
+    <div class=playerResultKey id="tourResultLabel">Tour number:</div>
+    <div class=playerResultValue>{{player.roman_numerals}}</div>
+  </div>
+  <div class="playerContentRow" id=playerHighFinishDetails>
+    <div class=playerResultKey id="finishResultLabel">High finish:</div>
+    <div class=playerResultValue>{{player.result_jacket|ordinal}}</div>
+  </div>
+</div>
+</div>
+{% endfor %}
+
+<div class=contentBuffer20px></div>
+</div>
+
+
+{% endblock %}

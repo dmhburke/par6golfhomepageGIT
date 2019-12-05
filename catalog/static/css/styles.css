@@ -1019,5 +1019,122 @@ select:focus, textarea:focus {
   top: 215px;
   left: 20px;
   border-radius: 10px;
+}
 
+/* === PLAYERS === */
+
+.mgmtCommitteeBox {
+  position: relative;
+  width: 80%;
+  margin: 20px auto;
+  border-top: 1px solid #BFBFBF;
+  border-bottom: 1px solid #BFBFBF;
+  padding: 0px 0px;
+}
+
+.touringPartyBox {
+  position: relative;
+  width: 80%;
+  margin: 20px auto;
+  padding: 0px 0px;
+}
+
+.mgmtCommitteeText {
+  height: 15px;
+  color: #BFBFBF;
+  background-color: white;
+  padding: 0px 2px;
+  position: absolute;
+  text-align: center;
+}
+
+#mgmtCommitteeTextHeader {
+  top: -10px;
+  left: 70px;
+}
+
+#mgmtCommitteeTextFooter {
+  bottom: -8px;
+  left: 100px;
+}
+
+.playerContentBox {
+  height: 96px;
+  width: 100%;
+  margin: 15px auto;
+  border-radius: 10px;
+  position: relative;
+}
+
+.playerContentImage {
+  height: 66px;
+  width: 66px;
+  border-radius: 100%;
+  background-color: grey;
+  position: absolute;
+  left: 7px;
+  top: 17px;
+}
+
+.playerContentRow {
+  position: absolute;
+  left: 80px;
+  height: 20px;
+  line-height: 20px;
+  width: 190px;
+}
+
+#playerNameDetails {
+  top: 24px;
+}
+
+#playerTourDetails {
+  top: 43px;
+  height: 15px;
+  background-color: none;
+}
+
+#playerHighFinishDetails {
+  top: 60px;
+  height: 15px;
+  background-color: none;
+  font-weight: bold;
+}
+
+.playerResultKey {
+  position: absolute;
+  left: 0px;
+  background-color: white;
+  height: 100%;
+  width: 150px;
+}
+
+.playerResultValue {
+  position:absolute;
+  right: 0px;
+  height: 100%;
+  width: 50px;
+  text-align: center;
+  color: grey;
+}
+
+#playerResultName {
+  font-weight: bold;
+  font-family: var(--brandfont);
+  font-size: 1.5rem;
+  color: var(--par6green);
+}
+
+#tourResultLabel, #finishResultLabel {
+  color: grey;
+}
+
+.playerNationality {
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  border-radius: 100%;
+  background-color: grey;
+  right: -10px;
+  top: -18px;
 }
