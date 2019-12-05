@@ -56,9 +56,10 @@
       <div class="tourLogo"><img id="bonanzaLogo" src="{% static 'icons/bonanzaLogoGreen.svg'%}"></div>
       <div class=tourTitle id="bonanzaTitleText">{{bonanza}}</div>
       <div class=tourSubTitle id=bonanzaSubTitleText>{{bonanza_location}}</div>
-      <a href="{{bonanza_url}}" target="_blank">
+      <!-- <a href="{{bonanza_url}}" target="_blank"> -->
          <!-- Add in link out logo -->
-      <img class=tourButtonOut id=bonanzaButtonOut src="{% static 'icons/linkOutIconWhite.svg' %}"></a>
+      <img class=tourButtonOut id=bonanzaButtonOut src="{% static 'icons/linkOutIconWhite.svg' %}">
+    <!-- </a> -->
       <div class=tourNumber>Tour # {{ bonanza_number }}</div>
       <div class=tourDates>{{bonanza_dates}}</div>
       <img class=tourJacketLogo src="{% static 'icons/jacketIconGreen.svg' %}">
