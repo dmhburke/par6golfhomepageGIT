@@ -34,10 +34,10 @@
   <div class=mgmtCommitteeText id=mgmtCommitteeTextHeader>Management Committee</div>
 {% for player in mgmt_committee %}
 <div class="playerContentBox bigShadow">
+  <div class=playerNationality style="background-image: url({{player.nationality_flag}}); background-size: cover"></div>
   <div class="playerContentImage" style="background-image: url({{player.image.url}}); background-size: cover"></div>
   <div class="playerContentRow" id=playerNameDetails>
     <div class=playerResultKey id="playerResultName">{{player.name}}</div>
-    <div class=playerNationality style="background-image: url({{player.nationality_flag}}); background-size: cover"></div>
   </div>
   <div class="playerContentRow" id=playerTourDetails>
     <div class=playerResultKey id="tourResultLabel">Tour number:</div>
@@ -64,19 +64,27 @@
 {% for player in touring_party %}
 <div class=touringPartyBox>
 <div class="playerContentBox bigShadow">
+  <div class=playerNationality style="background-image: url({{player.nationality_flag}}); background-size: cover"></div>
   <div class="playerContentImage" style="background-image: url({{player.image.url}}); background-size: cover"></div>
   <div class="playerContentRow" id=playerNameDetails>
     <div class=playerResultKey id="playerResultName">{{player.name}}</div>
-    <div class=playerNationality style="background-image: url({{player.nationality_flag}}); background-size: cover"></div>
   </div>
   <div class="playerContentRow" id=playerTourDetails>
     <div class=playerResultKey id="tourResultLabel">Tour number:</div>
     <div class=playerResultValue>{{player.roman_numerals}}</div>
   </div>
+
+  {% if player.result_jacket == "Jacket" %}
+  <div class="playerContentRow" id=playerHighFinishDetails>
+    <div class="playerResultKey" id="finishResultLabel" style="color: var(--par6green)">High finish:</div>
+    <div class=playerResultValue style="color: var(--par6green)">{{player.result_jacket|ordinal}}</div>
+  </div>
+  {% else %}
   <div class="playerContentRow" id=playerHighFinishDetails>
     <div class=playerResultKey id="finishResultLabel">High finish:</div>
     <div class=playerResultValue>{{player.result_jacket|ordinal}}</div>
   </div>
+  {% endif %}
 </div>
 </div>
 {% endfor %}

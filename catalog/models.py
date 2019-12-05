@@ -29,14 +29,23 @@ class PlayerModel(models.Model):
     @property
     def nationality_flag(self):
         flag = self.nationality
+        USFlag = "https://cdn.webshopapp.com/shops/94414/files/54958226/the-united-states-flag-vector-free-download.jpg"
+        AusFlag = "https://db-par6golfgeneral.s3.us-east-2.amazonaws.com/FlagImages/AusFlag.png"
+        CanFlag = "https://db-par6golfgeneral.s3.us-east-2.amazonaws.com/FlagImages/CanFlag.png"
+        EngFlag = "https://db-par6golfgeneral.s3.us-east-2.amazonaws.com/FlagImages/EngFlag.png"
+        NZFlag = "https://db-par6golfgeneral.s3.us-east-2.amazonaws.com/FlagImages/NZFlag.jpg"
+        SveFlag = "https://db-par6golfgeneral.s3.us-east-2.amazonaws.com/FlagImages/SveFlag.png"
+        WalFlag = "https://db-par6golfgeneral.s3.us-east-2.amazonaws.com/FlagImages/WalesFlag.jpg"
+
         def get_flag(flag):
             switch_options = {
-            "Australian": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Flag_of_Australia_%28converted%29.svg/1200px-Flag_of_Australia_%28converted%29.svg.png",
-            "American":"https://cdn.webshopapp.com/shops/94414/files/54958226/the-united-states-flag-vector-free-download.jpg",
-            "British": "https://cdn.britannica.com/25/4825-004-C11466B0/Flag-United-Kingdom.jpg",
-            "Canadian": "https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Canada_%28Pantone%29.svg",
-            "New Zealand": "https://upload.wikimedia.org/wikipedia/commons/b/b7/NZ_flag_design_Silver_Fern_%28Black_%26_White%29_by_Alofi_Kanter.svg",
-            "Swedish": "https://upload.wikimedia.org/wikipedia/en/4/4c/Flag_of_Sweden.svg"
+            "Australian": AusFlag,
+            "American": USFlag,
+            "English": EngFlag,
+            "Canadian": CanFlag,
+            "New Zealand": NZFlag,
+            "Swedish": SveFlag,
+            "Welsh": WalFlag
             }
             return switch_options.get(flag, "Error")
         return get_flag(flag)

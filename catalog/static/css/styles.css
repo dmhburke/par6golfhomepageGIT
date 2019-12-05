@@ -1134,7 +1134,6 @@ select:focus, textarea:focus {
   height: 30px;
   width: 30px;
   border-radius: 100%;
-  background-color: grey;
-  right: -10px;
-  top: -18px;
+  right: 5px;
+  top: 5px;
 }

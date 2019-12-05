@@ -14,9 +14,10 @@ YES_NO = (
 NATIONALITIES = (
     ("American", "American"),
     ("Australian", "Australian"),
-    ("British", "British"),
     ("Canadian", "Canadian"),
+    ("English", "English"),
     ("New Zealand", "New Zealand"),
     ("Swedish", "Swedish"),
+    ("Welsh", "Welsh"),
 
 )

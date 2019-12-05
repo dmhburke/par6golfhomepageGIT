@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from django.shortcuts import render, redirect
 from django.db.models import Sum, Count, Min
+from django.core.mail import send_mail
+from django.conf import settings
+from django.http import HttpResponse
 
 
 #Import models here
@@ -306,12 +309,22 @@ def players(request):
 def register(request):
     """View that controls how players register for next tour"""
 
+    #Email notification details (triggered on form submit)
+    subject = 'Bayou Bonanza | New player registration'
+    message1 = ' has registered as '
+    message2 = '. To see page, click www.par6golf.com/registersuccess. To go to admin, click www.par6golf.com/admin.'
+    email_from = settings.EMAIL_HOST_USER
+    email_to = ['dmhburke@gmail.com',]
+
     # Form details to record registration
     if request.method == 'POST':
         form = PlayerRegisterForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
+            name = post.player_name.name
+            status = post.tour_status
             post.save()
+            send_mail(subject, name + message1 + status + message2, email_from, email_to, fail_silently=False)
             return redirect('registersuccess') #or whatever the url
     else:
         form = PlayerRegisterForm()
